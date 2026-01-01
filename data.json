@@ -192,21 +192,6 @@
         "鹹感": 1
       },
       "image": "https://raw.githubusercontent.com/milk3462-art/VOX-Music-Bar/main/11.png"
-    },
-    {
-      "name": "超好喝",
-      "enName": "gewef",
-      "price": 980,
-      "id": "1767265125307",
-      "image": "https://raw.githubusercontent.com/Unfa-miliar/Unfamiliar/main/images/item_1767265105629.jpeg",
-      "ingredients": [
-        ""
-      ],
-      "flavors": {
-        "濃度": 1,
-        "酸感": 1,
-        "甜感": 1
-      }
     }
   ],
   "DRINK_CATEGORIES": [
