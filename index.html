@@ -289,88 +289,8 @@
   <!-- Application Logic -->
   <script>
     // --- Data ---
-    const COCKTAILS = [
-      {
-        id: "1",
-        name: "多多綠",
-        price: 380,
-        ingredients: ["琴酒 (Gin)", "綠茶風味萃取 (Green Tea)", "養樂多風味萃取 (Yakult)"],
-        flavors: { "濃度": 1, "酸感": 2, "甜感": 2, "茶感": 1 },
-        image: "https://raw.githubusercontent.com/milk3462-art/VOX-Music-Bar/main/1.png"
-      },
-      {
-        id: "2",
-        name: "序曲",
-        price: 380,
-        ingredients: ["蘭姆酒 (Rum)", "百香果 (Passion Fruit)", "香蜂草 (Lemon Balm)", "優格 (Yogurt)", "氣泡 (Sparkling)"],
-        flavors: { "濃度": 2, "酸感": 4, "甜感": 2, "草本": 1, "果香": 3 },
-        image: "https://raw.githubusercontent.com/milk3462-art/VOX-Music-Bar/main/2.png"
-      },
-      {
-        id: "3",
-        name: "CC Lemon",
-        price: 380,
-        ingredients: ["琴酒 (Gin)", "柑橘 (Citrus)", "檸檬 (Lemon)", "氣泡 (Sparkling)"],
-        flavors: { "濃度": 2, "酸感": 4, "甜感": 3, "苦感": 1, "草本": 1, "果香": 4 },
-        image: "https://raw.githubusercontent.com/milk3462-art/VOX-Music-Bar/main/3.png"
-      },
-      {
-        id: "4",
-        name: "野格好好喝",
-        price: 380,
-        ingredients: ["野格香甜酒 (Jägermeister)", "能量飲料 (Energy Drink)"],
-        flavors: { "濃度": 2, "甜感": 3, "草本": 2 },
-        image: "https://raw.githubusercontent.com/milk3462-art/VOX-Music-Bar/main/4.png"
-      },
-      {
-        id: "5",
-        name: "花王木木",
-        price: 420,
-        ingredients: ["伏特加 (Vodka)", "蜜桃玫瑰茶 (Peach Rose Tea)", "水蜜桃 (Peach)", "蔓越莓 (Cranberry)", "氣泡 (Sparkling)"],
-        flavors: { "濃度": 2, "酸感": 3, "甜感": 2, "茶感": 1, "果香": 2, "花香": 4 },
-        image: "https://raw.githubusercontent.com/voxmusicbar/VOX-Music-Bar/main/5.jpg"
-      },
-      {
-        id: "6",
-        name: "萃夢",
-        price: 420,
-        ingredients: ["琴酒 (Gin)", "綠茶 (Green Tea)", "芭樂 (Guava)", "梅子 (Plum)", "玫瑰 (Rose)"],
-        flavors: { "濃度": 2, "酸感": 1, "甜感": 3, "茶感": 1, "果香": 4, "花香": 2 },
-        image: "https://raw.githubusercontent.com/milk3462-art/VOX-Music-Bar/main/6.png"
-      },
-      {
-        id: "7",
-        name: "檸檬紅茶",
-        price: 420,
-        ingredients: ["琴酒 (Gin)", "檸檬 (Lemon)", "蜂蜜 (Honey)", "檸檬紅茶風味萃取 (Lemon Tea Extract)"],
-        flavors: { "濃度": 3, "酸感": 2, "甜感": 3, "茶感": 2, "果香": 3 },
-        image: "https://raw.githubusercontent.com/milk3462-art/VOX-Music-Bar/main/7.png"
-      },
-      {
-        id: "9",
-        name: "茶香夢",
-        price: 480,
-        ingredients: ["威士忌 (Whiskey)", "伯爵茶 (Earl Grey)", "可可 (Cocoa)", "莓果 (Berry)", "伯爵茶糖 (Earl Grey Sugar)"],
-        flavors: { "濃度": 4, "酸感": 4, "甜感": 2, "苦感": 1, "茶感": 2, "果香": 3 },
-        image: "https://raw.githubusercontent.com/milk3462-art/VOX-Music-Bar/main/9.png"
-      },
-      {
-        id: "10",
-        name: "水美眉",
-        price: 480,
-        ingredients: ["琴酒 (Gin)", "紅茶 (Black Tea)", "水蜜桃 (Peach)", "莓果 (Berry)", "蘋果 (Apple)"],
-        flavors: { "濃度": 4, "酸感": 4, "甜感": 3, "茶感": 2, "果香": 3, "花香": 3 },
-        image: "https://raw.githubusercontent.com/milk3462-art/VOX-Music-Bar/main/10.png"
-      },
-      {
-        id: "11",
-        name: "醉花生",
-        price: 480,
-        ingredients: ["威士忌 (Whiskey)", "奶油 (Butter)", "花生 (Peanut)", "牛奶 (Milk)"],
-        flavors: { "濃度": 5, "甜感": 4, "鹹感": 1 },
-        image: "https://raw.githubusercontent.com/milk3462-art/VOX-Music-Bar/main/11.png"
-      }
-    ];
+    let COCKTAILS = [];
+    let DRINK_CATEGORIES = [];
 
     const FLAVOR_LABELS = {
       "濃度": "Strength",
@@ -384,88 +304,21 @@
       "鹹感": "Salty"
     };
 
-    const DRINK_CATEGORIES = [
-      {
-        id: "beer",
-        name: "啤酒",
-        enName: "Beer",
-        icon: "sports_bar",
-        items: [
-          { name: "百威啤酒（小玻）", enName: "Budweiser Beer", price: 180, note: "6瓶900" },
-          { name: "海尼根啤酒（小玻）", enName: "Heineken Beer", price: 180, note: "6瓶900" },
-          { name: "朝日辛口啤酒（小玻）", enName: "Asahi Super Dry Beer", price: 180, note: "6瓶900" },
-          { name: "話梅(十顆)", enName: "Salted Plum (10 pcs)", price: 60 },
-          { name: "檸檬片(一盤)", enName: "Lemon Slices (1 plate)", price: 80 }
-        ]
-      },
-      {
-        id: "shot",
-        name: "Shot",
-        enName: "Shot",
-        icon: "liquor",
-        items: [
-          { name: "伏特加", enName: "Vodka", price: 150 },
-          { name: "龍舌蘭", enName: "Tequila", price: 150 },
-          { name: "梅酒", enName: "Plum Wine", price: 150 },
-          { name: "野格", enName: "Jägermeister", price: 200 },
-          { name: "生命之水", enName: "Spirytus Rektyfikowany", price: 250 },
-          { name: "調酒師特調", enName: "Bartender's Special", price: 150 },
-          { name: "摩天輪", enName: "Shot Wheel", price: 2000 }
-        ]
-      },
-      {
-        id: "spirits",
-        name: "烈酒",
-        enName: "Spirits",
-        icon: "liquor",
-        items: [
-          { name: "野格香甜酒（搭紅牛四罐）", enName: "Jägermeister (with 4 Red Bulls)", price: 3200 },
-          { name: "軒尼詩 V.S.O.P", enName: "HENNESSY V.S.O.P", price: 4000 },
-          { name: "大摩 12年", enName: "DALMORE 12Y", price: 4000 },
-          { name: "百富 12年", enName: "BALVENIE 12Y", price: 4000 },
-          { name: "格蘭菲迪15年", enName: "GLENFIDDICH 15Y", price: 3800 }
-        ]
-      },
-      {
-        id: "single-shot-spirits",
-        name: "單杯烈酒",
-        enName: "Single Shot Spirits",
-        icon: "glass_cup",
-        items: [
-          { name: "約翰走路黑牌威士忌", enName: "Johnnie Walker Black Label", price: 400 },
-          { name: "傑克丹尼爾田納西威士忌", enName: "Jack Daniel's Tennessee Whiskey", price: 400 },
-          { name: "美格波本威士忌", enName: "Maker's Mark Bourbon", price: 400 },
-          { name: "軒尼斯VSOP", enName: "HENNESSY V.S.O.P (Glass)", price: 400 },
-          { name: "人頭馬VSOP", enName: "RÉMY MARTIN V.S.O.P (Glass)", price: 400 }
-        ]
-      },
-      {
-        id: "soft-drinks",
-        name: "軟飲",
-        enName: "Soft Drinks",
-        icon: "local_drink", // or water_drop
-        items: [
-          { name: "可樂", enName: "Coke", price: 200 },
-          { name: "雪碧", enName: "Sprite", price: 200 },
-          { name: "蘇打水", enName: "Soda Water", price: 200 },
-          { name: "通寧水", enName: "Tonic Water", price: 200 },
-          { name: "柳橙汁", enName: "Orange Juice", price: 200 },
-          { name: "蔓越莓汁", enName: "Cranberry Juice", price: 200 },
-          { name: "蘋果汁", enName: "Apple Juice", price: 200 },
-          { name: "無糖綠茶", enName: "Sugar-free Green Tea", price: 200 },
-          { name: "紅茶", enName: "Black Tea", price: 200 },
-          { name: "奶茶", enName: "Milk Tea", price: 250 },
-          { name: "紅牛", enName: "Red Bull", price: 250 }
-        ]
-      }
-    ];
-
     // --- Initialization ---
-    document.addEventListener('DOMContentLoaded', () => {
-      initHero();
-      renderGrid();
-      renderCategories();
-      renderGradualBlur();
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const response = await fetch('data.json');
+        const data = await response.json();
+        COCKTAILS = data.COCKTAILS;
+        DRINK_CATEGORIES = data.DRINK_CATEGORIES;
+
+        initHero();
+        renderGrid();
+        renderCategories();
+        renderGradualBlur();
+      } catch (error) {
+        console.error('Error loading menu data:', error);
+      }
     });
 
     function initHero() {
@@ -473,15 +326,11 @@
         const title = document.getElementById('hero-title');
         const subtitle = document.getElementById('hero-subtitle');
 
-        if (title) {
-            title.classList.remove('opacity-0', 'translate-y-10');
-            title.classList.add('opacity-100', 'translate-y-0');
-        }
+        title.classList.remove('opacity-0', 'translate-y-10');
+        title.classList.add('opacity-100', 'translate-y-0');
 
-        if (subtitle) {
-            subtitle.classList.remove('opacity-0', 'translate-y-10');
-            subtitle.classList.add('opacity-100', 'translate-y-0');
-        }
+        subtitle.classList.remove('opacity-0', 'translate-y-10');
+        subtitle.classList.add('opacity-100', 'translate-y-0');
       }, 100);
     }
 
@@ -509,9 +358,6 @@
     }
 
     function createBlurInstance(config) {
-      // Check if already exists
-      if (document.getElementById(config.id)) return;
-
       const container = document.createElement('div');
       container.id = config.id;
 
@@ -582,7 +428,6 @@
     // --- Grid Rendering ---
     function renderGrid() {
       const grid = document.getElementById('cocktail-grid');
-      if (!grid) return;
       grid.innerHTML = '';
 
       COCKTAILS.forEach((cocktail, index) => {
@@ -639,7 +484,6 @@
     // --- Category Rendering ---
     function renderCategories() {
       const grid = document.getElementById('category-grid');
-      if (!grid) return;
       grid.innerHTML = '';
 
       DRINK_CATEGORIES.forEach((category, index) => {
